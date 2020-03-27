@@ -14,15 +14,15 @@ class PorttoApiManager: PorttoBaseClass
     class func fetchCollections()
     {
         let openSeaAddress = "0x960DE9907A2e2f5363646d48D7FB675Cd2892e91"
-        let params: Dictionary<String,Any> = ["format":"json",
-                                              "owner":openSeaAddress,
+        let params: Dictionary<String,Any> = ["owner":openSeaAddress,
                                               "offset":0,
                                               "limit":20]
         
-        AF.request("https://api.opensea.io/api/v1/assets").responseJSON
-        { (response) in
+        AF.request("https://api.opensea.io/api/v1/assets", parameters: params).responseJSON{ (response) in
             
             print(response)
+            
+            //let decodedObject = try JSONDecoder().decode([Asset], from: response)
             
         }
     }
