@@ -8,37 +8,39 @@
 
 import Foundation
 
-// MARK: - Asset
-struct Asset
+struct AssetResponse: Codable
 {
-    let tokenID: String?
-    let imageURL: String?
+    let assets: [Asset]?
+}
+
+struct Asset: Codable
+{
     let name: String?
+    let imageURL: String?
     let description: String?
     let permalink: String?
     let collection: Collection?
-    
+
     enum CodingKeys: String, CodingKey
     {
-        case tokenID = "token_id"
         case imageURL = "image_url"
-//        case name
-//        case permalink
-//        case collection
-//        case description
+        case name
+        case permalink
+        case collection
+        case description
     }
 }
 
-// MARK: - Collection
-struct Collection
+struct Collection: Codable
 {
     let name: String?
-    let collectionDescription: String?
+    let description: String?
     let shortDescription: String?
 
     enum CodingKeys: String, CodingKey
     {
         case shortDescription = "short_description"
-//        case name
+        case name
+        case description
     }
 }

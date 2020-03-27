@@ -18,12 +18,28 @@ class PorttoApiManager: PorttoBaseClass
                                               "offset":0,
                                               "limit":20]
         
-        AF.request("https://api.opensea.io/api/v1/assets", parameters: params).responseJSON{ (response) in
+        AF.request("https://api.opensea.io/api/v1/assets", parameters: params).responseDecodable(of: AssetResponse.self)
+        { response in
             
-            print(response)
-            
-            //let decodedObject = try JSONDecoder().decode([Asset], from: response)
-            
+            if let assetResponse = try? response.result.get(),
+               let assets = assetResponse.assets
+            {
+                for asset in assets
+                {
+                    print(asset.name)
+                }
+            }
         }
+        
+
+        /**
+         { (response: DataResponse<UserCredentials>) in
+         guard response.result.isSuccess else {
+           print("🥶 Error on login: \(String(describing: response.error))")
+           return
+         }
+         completion(response.result)
+         */
+        
     }
 }
