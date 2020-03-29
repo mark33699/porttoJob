@@ -47,13 +47,3 @@ class PorttoBaseTableViewCell: UITableViewCell
         backgroundColor = .clear
     }
 }
-
-class RootViewController: UIViewController
-{
-    override func viewDidAppear(_ animated: Bool)
-    {
-        super.viewDidAppear(animated)
-        let vc = AssetListViewController.init(viewModel: .init())
-        navigationController?.pushViewController(vc, animated: true)
-    }
-}

@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0D019B872431147900376318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D019B862431147900376318 /* Kingfisher */; };
+		0D7CE4BC24313D3600DF7F96 /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */; };
+		0D7CE4BE24313D3600DF7F96 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BD24313D3600DF7F96 /* XCoordinator */; };
+		0D7CE4C124313E3200DF7F96 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CE4C024313E3200DF7F96 /* AppCoordinator.swift */; };
 		0D82AC3F242E5D500031B32A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0D82AC3E242E5D500031B32A /* Alamofire */; };
 		0D82AC42242E5D760031B32A /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0D82AC41242E5D760031B32A /* SnapKit */; };
 		0D82AC44242E62B90031B32A /* AssetListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D82AC43242E62B90031B32A /* AssetListViewController.swift */; };
@@ -30,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D7CE4C024313E3200DF7F96 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0D82AC43242E62B90031B32A /* AssetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewController.swift; sourceTree = "<group>"; };
 		0D82AC4D242E645B0031B32A /* PorttoBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoBaseClass.swift; sourceTree = "<group>"; };
 		0D82AC4F242E65C80031B32A /* AssetListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewModel.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7CE4BE24313D3600DF7F96 /* XCoordinator in Frameworks */,
+				0D7CE4BC24313D3600DF7F96 /* XCoordinatorRx in Frameworks */,
 				0D019B872431147900376318 /* Kingfisher in Frameworks */,
 				0D82AC4A242E63E10031B32A /* RxSwift in Frameworks */,
 				0D82AC3F242E5D500031B32A /* Alamofire in Frameworks */,
@@ -74,6 +80,14 @@
 				0D82AC53242E73560031B32A /* Asset.swift */,
 			);
 			name = List;
+			sourceTree = "<group>";
+		};
+		0D7CE4BF24313E1A00DF7F96 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				0D7CE4C024313E3200DF7F96 /* AppCoordinator.swift */,
+			);
+			name = Coordinators;
 			sourceTree = "<group>";
 		};
 		0D82AC45242E62D60031B32A /* supportFiles */ = {
@@ -120,6 +134,7 @@
 			children = (
 				0D9F42A2242E55AD00B474A7 /* AppDelegate.swift */,
 				0D82AC4D242E645B0031B32A /* PorttoBaseClass.swift */,
+				0D7CE4BF24313E1A00DF7F96 /* Coordinators */,
 				0D019B8824312DA600376318 /* List */,
 				0D82AC47242E63150031B32A /* Detail */,
 				0D82AC45242E62D60031B32A /* supportFiles */,
@@ -150,6 +165,8 @@
 				0D82AC4B242E63E10031B32A /* RxCocoa */,
 				0DB42D952430EF9800CD23E2 /* RxDataSources */,
 				0D019B862431147900376318 /* Kingfisher */,
+				0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */,
+				0D7CE4BD24313D3600DF7F96 /* XCoordinator */,
 			);
 			productName = portto;
 			productReference = 0D9F429F242E55AD00B474A7 /* portto.app */;
@@ -185,6 +202,7 @@
 				0D82AC48242E63E10031B32A /* XCRemoteSwiftPackageReference "RxSwift" */,
 				0DB42D942430EF9700CD23E2 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				0D019B852431147900376318 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0D7CE4BA24313D3600DF7F96 /* XCRemoteSwiftPackageReference "XCoordinator" */,
 			);
 			productRefGroup = 0D9F42A0242E55AD00B474A7 /* Products */;
 			projectDirPath = "";
@@ -214,6 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7CE4C124313E3200DF7F96 /* AppCoordinator.swift in Sources */,
 				0DB42D8D2430B64700CD23E2 /* AssetDetailViewModel.swift in Sources */,
 				0DB42D8924307DBA00CD23E2 /* AssetListColell.swift in Sources */,
 				0D82AC54242E73560031B32A /* Asset.swift in Sources */,
@@ -433,6 +452,14 @@
 				minimumVersion = 5.13.2;
 			};
 		};
+		0D7CE4BA24313D3600DF7F96 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quickbirdstudios/XCoordinator";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 		0D82AC3D242E5D500031B32A /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -472,6 +499,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D019B852431147900376318 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D7CE4BA24313D3600DF7F96 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinatorRx;
+		};
+		0D7CE4BD24313D3600DF7F96 /* XCoordinator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D7CE4BA24313D3600DF7F96 /* XCRemoteSwiftPackageReference "XCoordinator" */;
+			productName = XCoordinator;
 		};
 		0D82AC3E242E5D500031B32A /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
