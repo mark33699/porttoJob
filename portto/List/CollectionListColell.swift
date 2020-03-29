@@ -18,7 +18,6 @@ class CollectionListColell: UICollectionViewCell
         lb.backgroundColor = .systemBlue
         return lb
     }()
-    
     private lazy var imageView: UIImageView =
     {
         let imgv = UIImageView()
@@ -38,13 +37,7 @@ class CollectionListColell: UICollectionViewCell
         layoutUI()
     }
     
-    override func prepareForReuse()
-    {
-        super.prepareForReuse()
-        label.text = ""
-    }
-    
-    func layoutUI()
+    private func layoutUI()
     {
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints
@@ -65,6 +58,12 @@ class CollectionListColell: UICollectionViewCell
             maker.right.equalToSuperview()
             maker.bottom.equalToSuperview()
         }
+    }
+    
+    override func prepareForReuse()
+    {
+        super.prepareForReuse()
+        label.text = ""
     }
     
     func updateUI()

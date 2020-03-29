@@ -19,10 +19,14 @@ class CollectionListViewController: PorttoBaseViewController
     {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        
         let cv = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         cv.dataSource = self
         cv.delegate = self
         cv.register(CollectionListColell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        
         return cv
     }()
     
@@ -40,11 +44,11 @@ class CollectionListViewController: PorttoBaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        title = "ETH餘額："
+//        title = "ETH餘額："
         layoutUI()
     }
     
-    func layoutUI()
+    private func layoutUI()
     {
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints
@@ -60,6 +64,7 @@ class CollectionListViewController: PorttoBaseViewController
 
 extension CollectionListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
+    //Mark: DataSource
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
         viewModel.assets.count
@@ -75,14 +80,18 @@ extension CollectionListViewController: UICollectionViewDataSource, UICollection
         return UICollectionViewCell()
     }
     
+    //Mark: Delegate
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        let vc = CollectionDetailViewController.init(viewModel: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    //Mark: DelegateFlowLayout
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
     {
         let width = (UIScreen.main.bounds.width - margin * 3) / 2
         return CGSize.init(width: width,
                            height: width * 2)
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat { margin }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat { margin }
 }

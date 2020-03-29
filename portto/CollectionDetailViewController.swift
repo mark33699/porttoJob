@@ -1,0 +1,136 @@
+//
+//  CollectionDetailViewController.swift
+//  portto
+//
+//  Created by 謝飛飛 on 2020/3/29.
+//  Copyright © 2020 MarkFly. All rights reserved.
+//
+
+import UIKit
+import RxCocoa
+
+fileprivate let imageCellReuseIdentifier = "image"
+fileprivate let labelCellReuseIdentifier = "label"
+
+class CollectionDetailViewController: PorttoBaseViewController
+{
+    enum CellType: Int
+    {
+        case image
+        case name
+        case desc
+        
+        static var count: Int
+        {
+            return 3
+        }
+        
+        var reuseIdentifier: String
+        {
+            switch self
+            {
+            case .image:
+                return imageCellReuseIdentifier
+            case .name:
+                return labelCellReuseIdentifier
+            case .desc:
+                return labelCellReuseIdentifier
+            }
+        }
+    }
+    
+    private let viewModel: CollectionDetailViewModel?
+    private lazy var tableView: UITableView =
+    {
+        let tv = UITableView()
+        tv.dataSource = self
+        tv.backgroundColor = .clear
+        tv.separatorStyle = .none
+        tv.showsVerticalScrollIndicator = false
+        tv.estimatedRowHeight = 100
+        tv.register(CollectionDetailImageTblCell.self, forCellReuseIdentifier: imageCellReuseIdentifier)
+        tv.register(CollectionDetailLabelTblCell.self, forCellReuseIdentifier: labelCellReuseIdentifier)
+        return tv
+    }()
+    private lazy var button: UIButton =
+    {
+        let btn = UIButton()
+        btn.setTitle("permalink", for: .normal)
+        btn.backgroundColor = .systemTeal
+        btn.rx.tap.bind
+        {
+            
+        }.disposed(by: bag)
+        return btn
+    }()
+    
+    required init?(coder: NSCoder)
+    {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    init(viewModel: CollectionDetailViewModel?)
+    {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        layoutUI()
+    }
+    
+    private func layoutUI()
+    {
+        view.addSubview(button)
+        button.snp.makeConstraints
+        { (maker) in
+            
+            maker.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(margin)
+            maker.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-margin)
+            maker.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).offset(-margin)
+            maker.height.equalTo(button.snp.width).multipliedBy(0.25)
+        }
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints
+        { (maker) in
+            
+            maker.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(margin)
+            maker.left.equalTo(view.safeAreaLayoutGuide.snp.left).offset(margin)
+            maker.right.equalTo(view.safeAreaLayoutGuide.snp.right).offset(-margin)
+            maker.bottom.equalTo(button.snp.top).offset(-margin)
+        }
+    }
+}
+
+extension CollectionDetailViewController: UITableViewDataSource
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        CellType.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        guard let cellType = CellType.init(rawValue: indexPath.row) else { return UITableViewCell() }
+        
+        switch cellType
+        {
+        case .image:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? CollectionDetailImageTblCell
+            {
+                cell.updateUI()
+                return cell
+            }
+        case .name, .desc:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? CollectionDetailLabelTblCell
+            {
+                cell.updateUI(text: cellType == .name ? "藏品名稱" : "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                return cell
+            }
+        }
+        return UITableViewCell()
+    }
+}
