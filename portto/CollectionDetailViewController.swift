@@ -39,7 +39,7 @@ class CollectionDetailViewController: PorttoBaseViewController
         }
     }
     
-    private let viewModel: CollectionDetailViewModel?
+    private let viewModel: CollectionDetailViewModel
     private lazy var tableView: UITableView =
     {
         let tv = UITableView()
@@ -69,7 +69,7 @@ class CollectionDetailViewController: PorttoBaseViewController
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(viewModel: CollectionDetailViewModel?)
+    init(viewModel: CollectionDetailViewModel)
     {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -78,6 +78,7 @@ class CollectionDetailViewController: PorttoBaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        title = viewModel.currentAsset.collection?.name
         layoutUI()
     }
     
@@ -121,13 +122,15 @@ extension CollectionDetailViewController: UITableViewDataSource
         case .image:
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? CollectionDetailImageTblCell
             {
-                cell.updateUI()
+                cell.updateUI(url: viewModel.currentAsset.imageURL ?? "")
                 return cell
             }
         case .name, .desc:
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? CollectionDetailLabelTblCell
             {
-                cell.updateUI(text: cellType == .name ? "藏品名稱" : "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+                cell.updateUI(text: cellType == .name ?
+                    viewModel.currentAsset.name :
+                    viewModel.currentAsset.description)
                 return cell
             }
         }

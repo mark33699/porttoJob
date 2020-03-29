@@ -49,7 +49,7 @@ class CollectionDetailLabelTblCell: PorttoBaseTableViewCell
         collectionLabel.text = ""
     }
     
-    func updateUI(text: String)
+    func updateUI(text: String?)
     {
         collectionLabel.text = text
     }

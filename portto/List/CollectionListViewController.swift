@@ -85,7 +85,8 @@ extension CollectionListViewController: UICollectionViewDelegate, UICollectionVi
     //Mark: Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let vc = CollectionDetailViewController.init(viewModel: nil)
+        let vm = CollectionDetailViewModel.init(currentAsset: viewModel.assets[indexPath.row])
+        let vc = CollectionDetailViewController.init(viewModel: vm)
         navigationController?.pushViewController(vc, animated: true)
     }
     
