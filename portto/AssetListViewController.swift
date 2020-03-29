@@ -1,5 +1,5 @@
 //
-//  CollectionListViewController.swift
+//  AssetListViewController.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/28.
@@ -15,9 +15,9 @@ import RxDataSources
 let margin: CGFloat = 10
 fileprivate let cellReuseIdentifier = "cell"
 
-class CollectionListViewController: PorttoBaseViewController
+class AssetListViewController: PorttoBaseViewController
 {
-    private let viewModel: CollectionListViewModel
+    private let viewModel: AssetListViewModel
     private lazy var collectionView: UICollectionView =
     {
         let layout = UICollectionViewFlowLayout()
@@ -28,7 +28,7 @@ class CollectionListViewController: PorttoBaseViewController
         let cv = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
         cv.delegate = self
         cv.showsVerticalScrollIndicator = false
-        cv.register(CollectionListColell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        cv.register(AssetListColell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         return cv
     }()
@@ -38,7 +38,7 @@ class CollectionListViewController: PorttoBaseViewController
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(viewModel: CollectionListViewModel)
+    init(viewModel: AssetListViewModel)
     {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -50,7 +50,7 @@ class CollectionListViewController: PorttoBaseViewController
         viewModel.publishSubject
             .asDriver(onErrorJustReturn: [])
             .drive(collectionView.rx.items(cellIdentifier: cellReuseIdentifier,
-                                           cellType: CollectionListColell.self))
+                                           cellType: AssetListColell.self))
             { (_, asset, cell) in
                 
                 cell.updateUI(asset)
@@ -80,13 +80,13 @@ class CollectionListViewController: PorttoBaseViewController
     }
 }
 
-extension CollectionListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+extension AssetListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
     //Mark: Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        let vm = CollectionDetailViewModel.init(currentAsset: viewModel.assets[indexPath.row])
-        let vc = CollectionDetailViewController.init(viewModel: vm)
+        let vm = AssetDetailViewModel.init(currentAsset: viewModel.assets[indexPath.row])
+        let vc = AssetDetailViewController.init(viewModel: vm)
         navigationController?.pushViewController(vc, animated: true)
     }
     

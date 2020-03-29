@@ -1,5 +1,5 @@
 //
-//  CollectionDetailImageTblCell.swift
+//  AssetDetailImageTblCell.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/29.
@@ -10,12 +10,11 @@ import UIKit
 import Kingfisher
 import AVFoundation
 
-class CollectionDetailImageTblCell: PorttoBaseTableViewCell
+class AssetDetailImageTblCell: PorttoBaseTableViewCell
 {
-    private lazy var collectionImageView: UIImageView =
+    private lazy var assetImageView: UIImageView =
     {
-        let imgv = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 100))
-//        let imgv = UIImageView()
+        let imgv = UIImageView.init(frame: CGRect.init(x: 0, y: 0, width: 44, height: 44))
         imgv.contentMode = .scaleAspectFit
         imgv.backgroundColor = .brown
         imgv.clipsToBounds = true
@@ -35,13 +34,13 @@ class CollectionDetailImageTblCell: PorttoBaseTableViewCell
     
     private func layoutUI()
     {
-        contentView.addSubview(collectionImageView)
+        contentView.addSubview(assetImageView)
     }
 
     override func prepareForReuse()
     {
         super.prepareForReuse()
-        collectionImageView.snp.removeConstraints()
+        assetImageView.snp.removeConstraints()
     }
     
     func updateUI(url: String)
@@ -54,20 +53,20 @@ class CollectionDetailImageTblCell: PorttoBaseTableViewCell
                 switch result {
                 case .success(let value):
                     
-                    let realImageSize = AVMakeRect(aspectRatio: value.image.size, insideRect: self.collectionImageView.frame).size
+                    let realImageSize = AVMakeRect(aspectRatio: value.image.size, insideRect: self.assetImageView.frame).size
                     let ratio = realImageSize.height / realImageSize.width
 
                     if ratio > 0
                     {
-                        self.collectionImageView.image = value.image
-                        self.collectionImageView.snp.makeConstraints
+                        self.assetImageView.image = value.image
+                        self.assetImageView.snp.makeConstraints
                         { (maker) in
                             
                             maker.top.equalToSuperview().offset(margin)
                             maker.left.equalToSuperview()
                             maker.right.equalToSuperview()
                             maker.bottom.equalToSuperview().offset(-margin)
-                            maker.height.equalTo(self.collectionImageView.snp.width).multipliedBy(ratio)
+                            maker.height.equalTo(self.assetImageView.snp.width).multipliedBy(ratio)
                         }
                     }
                     

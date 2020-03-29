@@ -1,5 +1,5 @@
 //
-//  CollectionListViewModel.swift
+//  AssetListViewModel.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/28.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import Alamofire
 
-class CollectionListViewModel: PorttoBaseClass
+class AssetListViewModel: PorttoBaseClass
 {
     let publishSubject: PublishSubject<[Asset]> = PublishSubject.init()
     var assets: Array<Asset> = []

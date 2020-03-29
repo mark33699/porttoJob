@@ -1,5 +1,5 @@
 //
-//  CollectionDetailViewModel.swift
+//  AssetDetailViewModel.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/29.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionDetailViewModel: PorttoBaseClass
+class AssetDetailViewModel: PorttoBaseClass
 {
     let currentAsset: Asset
     

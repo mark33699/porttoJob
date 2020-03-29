@@ -1,5 +1,5 @@
 //
-//  CollectionDetailLabelTblCell.swift
+//  AssetDetailLabelTblCell.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/29.
@@ -8,9 +8,9 @@
 
 import UIKit
 
-class CollectionDetailLabelTblCell: PorttoBaseTableViewCell
+class AssetDetailLabelTblCell: PorttoBaseTableViewCell
 {
-    private lazy var collectionLabel: UILabel =
+    private lazy var assetLabel: UILabel =
     {
         let lb = UILabel()
         lb.textAlignment = .center
@@ -32,8 +32,8 @@ class CollectionDetailLabelTblCell: PorttoBaseTableViewCell
     
     private func layoutUI()
     {
-        contentView.addSubview(collectionLabel)
-        collectionLabel.snp.makeConstraints
+        contentView.addSubview(assetLabel)
+        assetLabel.snp.makeConstraints
         { (maker) in
             
             maker.top.equalToSuperview().offset(margin)
@@ -46,11 +46,11 @@ class CollectionDetailLabelTblCell: PorttoBaseTableViewCell
     override func prepareForReuse()
     {
         super.prepareForReuse()
-        collectionLabel.text = ""
+        assetLabel.text = ""
     }
     
     func updateUI(text: String?)
     {
-        collectionLabel.text = text
+        assetLabel.text = text
     }
 }

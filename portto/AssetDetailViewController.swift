@@ -1,5 +1,5 @@
 //
-//  CollectionDetailViewController.swift
+//  AssetDetailViewController.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/29.
@@ -12,7 +12,7 @@ import RxCocoa
 fileprivate let imageCellReuseIdentifier = "image"
 fileprivate let labelCellReuseIdentifier = "label"
 
-class CollectionDetailViewController: PorttoBaseViewController
+class AssetDetailViewController: PorttoBaseViewController
 {
     enum CellType: Int
     {
@@ -39,7 +39,7 @@ class CollectionDetailViewController: PorttoBaseViewController
         }
     }
     
-    private let viewModel: CollectionDetailViewModel
+    private let viewModel: AssetDetailViewModel
     private lazy var tableView: UITableView =
     {
         let tv = UITableView()
@@ -48,8 +48,8 @@ class CollectionDetailViewController: PorttoBaseViewController
         tv.separatorStyle = .none
         tv.showsVerticalScrollIndicator = false
         tv.estimatedRowHeight = 100
-        tv.register(CollectionDetailImageTblCell.self, forCellReuseIdentifier: imageCellReuseIdentifier)
-        tv.register(CollectionDetailLabelTblCell.self, forCellReuseIdentifier: labelCellReuseIdentifier)
+        tv.register(AssetDetailImageTblCell.self, forCellReuseIdentifier: imageCellReuseIdentifier)
+        tv.register(AssetDetailLabelTblCell.self, forCellReuseIdentifier: labelCellReuseIdentifier)
         return tv
     }()
     private lazy var button: UIButton =
@@ -69,7 +69,7 @@ class CollectionDetailViewController: PorttoBaseViewController
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(viewModel: CollectionDetailViewModel)
+    init(viewModel: AssetDetailViewModel)
     {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -106,7 +106,7 @@ class CollectionDetailViewController: PorttoBaseViewController
     }
 }
 
-extension CollectionDetailViewController: UITableViewDataSource
+extension AssetDetailViewController: UITableViewDataSource
 {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
@@ -120,13 +120,13 @@ extension CollectionDetailViewController: UITableViewDataSource
         switch cellType
         {
         case .image:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? CollectionDetailImageTblCell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? AssetDetailImageTblCell
             {
                 cell.updateUI(url: viewModel.currentAsset.imageURL ?? "")
                 return cell
             }
         case .name, .desc:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? CollectionDetailLabelTblCell
+            if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? AssetDetailLabelTblCell
             {
                 cell.updateUI(text: cellType == .name ?
                     viewModel.currentAsset.name :

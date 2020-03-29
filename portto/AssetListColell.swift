@@ -1,5 +1,5 @@
 //
-//  CollectionListColell.swift
+//  AssetListColell.swift
 //  portto
 //
 //  Created by 謝飛飛 on 2020/3/29.
@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CollectionListColell: UICollectionViewCell
+class AssetListColell: UICollectionViewCell
 {
     private lazy var label: UILabel =
     {
