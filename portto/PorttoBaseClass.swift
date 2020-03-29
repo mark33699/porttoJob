@@ -10,10 +10,22 @@ import UIKit
 
 class PorttoBaseClass
 {
-    
+    deinit
+    {
+        print("\(Self.self) deinit")
+    }
 }
 
 class PorttoBaseViewController: UIViewController
 {
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        view.backgroundColor = .systemYellow
+    }
     
+    deinit
+    {
+        print("\(Self.self) deinit")
+    }
 }

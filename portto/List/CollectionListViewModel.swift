@@ -8,6 +8,8 @@
 
 import UIKit
 
-class CollectionListViewModel: PorttoBaseClass {
-
+class CollectionListViewModel: PorttoBaseClass
+{
+//    let assets: Array<Asset> = []
+    let assets: Array<Int> = Array.init(repeating: 0, count: 100)
 }

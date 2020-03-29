@@ -30,16 +30,5 @@ class PorttoApiManager: PorttoBaseClass
                 }
             }
         }
-        
-
-        /**
-         { (response: DataResponse<UserCredentials>) in
-         guard response.result.isSuccess else {
-           print("🥶 Error on login: \(String(describing: response.error))")
-           return
-         }
-         completion(response.result)
-         */
-        
     }
 }

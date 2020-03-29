@@ -21,6 +21,7 @@
 		0D9F42AA242E55B000B474A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0D9F42A9242E55B000B474A7 /* Assets.xcassets */; };
 		0D9F42AD242E55B000B474A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D9F42AB242E55B000B474A7 /* LaunchScreen.storyboard */; };
 		0D9F42B7242E59CC00B474A7 /* banner.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D9F42B6242E59CC00B474A7 /* banner.png */; };
+		0DB42D8924307DBA00CD23E2 /* CollectionListColell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB42D8824307DBA00CD23E2 /* CollectionListColell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0D9F42AC242E55B000B474A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0D9F42AE242E55B000B474A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D9F42B6242E59CC00B474A7 /* banner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner.png; sourceTree = "<group>"; };
+		0DB42D8824307DBA00CD23E2 /* CollectionListColell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionListColell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			children = (
 				0D82AC43242E62B90031B32A /* CollectionListViewController.swift */,
 				0D82AC4F242E65C80031B32A /* CollectionListViewModel.swift */,
+				0DB42D8824307DBA00CD23E2 /* CollectionListColell.swift */,
 				0D82AC53242E73560031B32A /* Asset.swift */,
 			);
 			path = List;
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DB42D8924307DBA00CD23E2 /* CollectionListColell.swift in Sources */,
 				0D82AC54242E73560031B32A /* Asset.swift in Sources */,
 				0D82AC50242E65C80031B32A /* CollectionListViewModel.swift in Sources */,
 				0D82AC44242E62B90031B32A /* CollectionListViewController.swift in Sources */,
