@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class CollectionListColell: UICollectionViewCell
 {
@@ -23,6 +24,7 @@ class CollectionListColell: UICollectionViewCell
         let imgv = UIImageView()
         imgv.contentMode = .scaleAspectFill
         imgv.backgroundColor = .brown
+        imgv.clipsToBounds = true
         return imgv
     }()
     
@@ -69,5 +71,10 @@ class CollectionListColell: UICollectionViewCell
     func updateUI(_ asset: Asset)
     {
         label.text = asset.name
+        if let imgUrl = asset.imageURL
+        {
+            let url = URL.init(string: imgUrl)
+            imageView.kf.setImage(with: url)
+        }
     }
 }
