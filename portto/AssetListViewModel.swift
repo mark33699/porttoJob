@@ -9,9 +9,27 @@
 import UIKit
 import RxSwift
 import Alamofire
+import XCoordinator
+import XCoordinatorRx
+import Action
 
 class AssetListViewModel: PorttoBaseClass
 {
+    //MARK:- Input
+    private let router: UnownedRouter<AssetRoute>
+    lazy var assetSelectedAction = Action<Asset, Void>
+    { [unowned self] asset in
+        
+        self.router.rx.trigger(.assetDetail(asset))
+    }
+    private(set) lazy var selectedAsset = assetSelectedAction.inputs
+
+    init(router: UnownedRouter<AssetRoute>)
+    {
+        self.router = router
+    }
+    
+    //MARK:- Output
     let publishSubject: PublishSubject<[Asset]> = PublishSubject.init()
     var assets: Array<Asset> = []
     var shouldNextPage = true

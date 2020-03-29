@@ -55,6 +55,11 @@ class AssetListViewController: PorttoBaseViewController
                 cell.updateUI(asset)
                 
             }.disposed(by: bag)
+        
+        
+        collectionView.rx.modelSelected(Asset.self)
+            .bind(to: viewModel.selectedAsset)
+            .disposed(by: bag)
     }
     
     override func viewDidLoad()
@@ -82,12 +87,12 @@ class AssetListViewController: PorttoBaseViewController
 extension AssetListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
     //Mark: Delegate
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-    {
-        let vm = AssetDetailViewModel.init(currentAsset: viewModel.assets[indexPath.row])
-        let vc = AssetDetailViewController.init(viewModel: vm)
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+//    {
+//        let vm = AssetDetailViewModel.init(currentAsset: viewModel.assets[indexPath.row])
+//        let vc = AssetDetailViewController.init(viewModel: vm)
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
