@@ -26,6 +26,7 @@
 		0DB42D8D2430B64700CD23E2 /* CollectionDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB42D8C2430B64700CD23E2 /* CollectionDetailViewModel.swift */; };
 		0DB42D8F2430BB1E00CD23E2 /* CollectionDetailImageTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB42D8E2430BB1E00CD23E2 /* CollectionDetailImageTblCell.swift */; };
 		0DB42D912430BCC300CD23E2 /* CollectionDetailLabelTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB42D902430BCC300CD23E2 /* CollectionDetailLabelTblCell.swift */; };
+		0DB42D962430EF9800CD23E2 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 0DB42D952430EF9800CD23E2 /* RxDataSources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 				0D82AC4A242E63E10031B32A /* RxSwift in Frameworks */,
 				0D82AC3F242E5D500031B32A /* Alamofire in Frameworks */,
 				0D82AC4C242E63E10031B32A /* RxCocoa in Frameworks */,
+				0DB42D962430EF9800CD23E2 /* RxDataSources in Frameworks */,
 				0D82AC42242E5D760031B32A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +149,7 @@
 				0D82AC41242E5D760031B32A /* SnapKit */,
 				0D82AC49242E63E10031B32A /* RxSwift */,
 				0D82AC4B242E63E10031B32A /* RxCocoa */,
+				0DB42D952430EF9800CD23E2 /* RxDataSources */,
 			);
 			productName = portto;
 			productReference = 0D9F429F242E55AD00B474A7 /* portto.app */;
@@ -180,6 +183,7 @@
 				0D82AC3D242E5D500031B32A /* XCRemoteSwiftPackageReference "Alamofire" */,
 				0D82AC40242E5D760031B32A /* XCRemoteSwiftPackageReference "SnapKit" */,
 				0D82AC48242E63E10031B32A /* XCRemoteSwiftPackageReference "RxSwift" */,
+				0DB42D942430EF9700CD23E2 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = 0D9F42A0242E55AD00B474A7 /* Products */;
 			projectDirPath = "";
@@ -445,6 +449,14 @@
 				minimumVersion = 5.1.1;
 			};
 		};
+		0DB42D942430EF9700CD23E2 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -467,6 +479,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D82AC48242E63E10031B32A /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxCocoa;
+		};
+		0DB42D952430EF9800CD23E2 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0DB42D942430EF9700CD23E2 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

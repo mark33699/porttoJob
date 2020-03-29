@@ -19,8 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate
         Bundle(path: "/Applications/InjectionIII.app/Contents/Resources/iOSInjection.bundle")?.load()
         #endif
         
-        let collectionListVC = CollectionListViewController(viewModel: .init())
-        let nc = UINavigationController.init(rootViewController: collectionListVC)
+//        let vc = CollectionListViewController(viewModel: .init())
+        let vc = RootViewController()
+        let nc = UINavigationController.init(rootViewController: vc)
         window?.rootViewController = nc
         return true
     }

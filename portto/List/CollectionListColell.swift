@@ -66,8 +66,8 @@ class CollectionListColell: UICollectionViewCell
         label.text = ""
     }
     
-    func updateUI()
+    func updateUI(_ asset: Asset)
     {
-        
+        label.text = asset.name
     }
 }

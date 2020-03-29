@@ -8,6 +8,9 @@
 
 import UIKit
 import SnapKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 let margin: CGFloat = 10
 fileprivate let cellReuseIdentifier = "cell"
@@ -23,8 +26,8 @@ class CollectionListViewController: PorttoBaseViewController
         layout.minimumInteritemSpacing = 10
         
         let cv = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        cv.dataSource = self
         cv.delegate = self
+        cv.showsVerticalScrollIndicator = false
         cv.register(CollectionListColell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
         return cv
@@ -39,6 +42,20 @@ class CollectionListViewController: PorttoBaseViewController
     {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModelBinding()
+    }
+    
+    private func viewModelBinding()
+    {
+        viewModel.publishSubject
+            .asDriver(onErrorJustReturn: [])
+            .drive(collectionView.rx.items(cellIdentifier: cellReuseIdentifier,
+                                           cellType: CollectionListColell.self))
+            { (_, asset, cell) in
+                
+                cell.updateUI(asset)
+                
+            }.disposed(by: bag)
     }
     
     override func viewDidLoad()
@@ -46,6 +63,7 @@ class CollectionListViewController: PorttoBaseViewController
         super.viewDidLoad()
 //        title = "ETH餘額："
         layoutUI()
+        viewModel.fetchAssets()
     }
     
     private func layoutUI()
@@ -62,29 +80,22 @@ class CollectionListViewController: PorttoBaseViewController
     }
 }
 
-extension CollectionListViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
+extension CollectionListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
-    //Mark: DataSource
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
-    {
-        viewModel.assets.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath) as? CollectionListColell
-        {
-            cell.updateUI()
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
     //Mark: Delegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         let vc = CollectionDetailViewController.init(viewModel: nil)
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
+    {
+        if indexPath.row == viewModel.assets.count - 1
+        && viewModel.shouldNextPage
+        {
+            viewModel.fetchAssets()
+        }
     }
     
     //Mark: DelegateFlowLayout
