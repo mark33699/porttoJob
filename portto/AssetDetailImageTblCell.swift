@@ -62,7 +62,7 @@ class AssetDetailImageTblCell: PorttoBaseTableViewCell
                         self.assetImageView.snp.makeConstraints
                         { (maker) in
                             
-                            maker.top.equalToSuperview().offset(margin)
+                            maker.top.equalToSuperview()
                             maker.left.equalToSuperview()
                             maker.right.equalToSuperview()
                             maker.bottom.equalToSuperview().offset(-margin)

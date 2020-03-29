@@ -8,6 +8,7 @@
 
 import UIKit
 import RxCocoa
+import SafariServices
 
 fileprivate let imageCellReuseIdentifier = "image"
 fileprivate let labelCellReuseIdentifier = "label"
@@ -59,6 +60,11 @@ class AssetDetailViewController: PorttoBaseViewController
         btn.backgroundColor = .systemTeal
         btn.rx.tap.bind
         {
+            if let url = URL.init(string: self.viewModel.currentAsset.permalink ?? "")
+            {
+                let sf = SFSafariViewController.init(url: url)
+                self.present(sf, animated: true, completion: nil)
+            }
             
         }.disposed(by: bag)
         return btn

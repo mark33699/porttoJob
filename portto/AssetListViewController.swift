@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
-import RxDataSources
 
 let margin: CGFloat = 10
 fileprivate let cellReuseIdentifier = "cell"
