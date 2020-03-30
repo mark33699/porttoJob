@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
-import ZVRefreshing
+//import ZVRefreshing
 
 let margin: CGFloat = 10 //for layout
 fileprivate let cellReuseIdentifier = "cell"
@@ -19,7 +19,7 @@ class AssetListViewController: PorttoBaseViewController
 {
     private let viewModel: AssetListViewModel
 
-    private var nativeAutoFooter: ZVRefreshAutoNativeFooter?
+//    private var nativeAutoFooter: ZVRefreshAutoNativeFooter?
     private lazy var collectionView: UICollectionView =
     {
         let layout = UICollectionViewFlowLayout()
@@ -32,8 +32,8 @@ class AssetListViewController: PorttoBaseViewController
         cv.showsVerticalScrollIndicator = false
         cv.register(AssetListColell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
         
-        nativeAutoFooter = ZVRefreshAutoNativeFooter()
-        cv.refreshFooter = nativeAutoFooter
+//        nativeAutoFooter = ZVRefreshAutoNativeFooter()
+//        cv.refreshFooter = nativeAutoFooter
         
         return cv
     }()
