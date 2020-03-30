@@ -47,6 +47,7 @@ class AssetDetailImageTblCell: PorttoBaseTableViewCell
     {
         if let url = URL.init(string: url)
         {
+            //取得圖片 > 算出比例 > 以寬度為準去調整高度
             KingfisherManager.shared.retrieveImage(with: url)
             { result in
                 

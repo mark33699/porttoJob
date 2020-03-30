@@ -12,6 +12,7 @@
 		0D2CA3C32432486D005BE158 /* ZVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D2CA3C624324876005BE158 /* ZVRefreshing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C524324876005BE158 /* ZVRefreshing.framework */; };
 		0D2CA3C724324876005BE158 /* ZVRefreshing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C524324876005BE158 /* ZVRefreshing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0D2CA3CA24326F12005BE158 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2CA3C924326F12005BE158 /* Balance.swift */; };
 		0D7CE4BC24313D3600DF7F96 /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */; };
 		0D7CE4BE24313D3600DF7F96 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BD24313D3600DF7F96 /* XCoordinator */; };
 		0D7CE4C32431422B00DF7F96 /* AssetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */; };
@@ -55,6 +56,7 @@
 /* Begin PBXFileReference section */
 		0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZVActivityIndicatorView.framework; path = Carthage/Build/iOS/ZVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0D2CA3C524324876005BE158 /* ZVRefreshing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZVRefreshing.framework; path = Carthage/Build/iOS/ZVRefreshing.framework; sourceTree = "<group>"; };
+		0D2CA3C924326F12005BE158 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
 		0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCoordinator.swift; sourceTree = "<group>"; };
 		0D82AC43242E62B90031B32A /* AssetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewController.swift; sourceTree = "<group>"; };
 		0D82AC4D242E645B0031B32A /* PorttoBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoBaseClass.swift; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				0D82AC4F242E65C80031B32A /* AssetListViewModel.swift */,
 				0DB42D8824307DBA00CD23E2 /* AssetListColell.swift */,
 				0D82AC53242E73560031B32A /* Asset.swift */,
+				0D2CA3C924326F12005BE158 /* Balance.swift */,
 			);
 			name = List;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				0DB42D912430BCC300CD23E2 /* AssetDetailLabelTblCell.swift in Sources */,
 				0DB42D8B2430B61200CD23E2 /* AssetDetailViewController.swift in Sources */,
 				0D82AC4E242E645B0031B32A /* PorttoBaseClass.swift in Sources */,
+				0D2CA3CA24326F12005BE158 /* Balance.swift in Sources */,
 				0D9F42A3242E55AD00B474A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

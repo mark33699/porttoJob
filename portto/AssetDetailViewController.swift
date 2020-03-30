@@ -14,16 +14,13 @@ fileprivate let labelCellReuseIdentifier = "label"
 
 class AssetDetailViewController: PorttoBaseViewController
 {
-    enum CellType: Int
+    enum CellType: Int //畫面組成
     {
         case image
         case name
         case desc
         
-        static var count: Int
-        {
-            return 3
-        }
+        static var count: Int { 3 }
         
         var reuseIdentifier: String
         {
@@ -64,6 +61,7 @@ class AssetDetailViewController: PorttoBaseViewController
         return btn
     }()
     
+    //MARK: Life cycle
     required init?(coder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
@@ -84,6 +82,7 @@ class AssetDetailViewController: PorttoBaseViewController
     
     private func layoutUI()
     {
+        //按鈕不可滑動
         view.addSubview(button)
         button.snp.makeConstraints
         { (maker) in
@@ -108,10 +107,7 @@ class AssetDetailViewController: PorttoBaseViewController
 
 extension AssetDetailViewController: UITableViewDataSource
 {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
-        CellType.count
-    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { CellType.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {

@@ -13,6 +13,8 @@ import XCoordinator
 import XCoordinatorRx
 import Action
 
+let ethereumAddress = "0x960DE9907A2e2f5363646d48D7FB675Cd2892e91"
+
 class AssetListViewModel: PorttoBaseClass
 {
     //MARK:- Input
@@ -21,7 +23,6 @@ class AssetListViewModel: PorttoBaseClass
     
     lazy var assetSelectedAction = Action<Asset, Void>
     { [unowned self] asset in
-        
         self.router.rx.trigger(.assetDetail(asset))
     }
 
@@ -31,7 +32,8 @@ class AssetListViewModel: PorttoBaseClass
     }
     
     //MARK:- Output
-    let publishSubject: PublishSubject<[Asset]> = PublishSubject.init()
+    let assetSubject: PublishSubject<[Asset]> = PublishSubject.init()
+    let balanceSubject: PublishSubject<String> = PublishSubject.init()
     var assets: Array<Asset> = []
     var shouldNextPage = true
     private let pageLimit = 20
@@ -39,8 +41,7 @@ class AssetListViewModel: PorttoBaseClass
     
     func fetchAssets()
     {
-        let openSeaAddress = "0x960DE9907A2e2f5363646d48D7FB675Cd2892e91"
-        let params: Dictionary<String,Any> = ["owner":openSeaAddress,
+        let params: Dictionary<String,Any> = ["owner":ethereumAddress,
                                               "offset":"\(currentPage)",
                                               "limit":pageLimit]
         
@@ -51,7 +52,7 @@ class AssetListViewModel: PorttoBaseClass
             {
                 print(error.localizedDescription)
                 self.shouldNextPage = false
-                self.publishSubject.onNext([])
+                self.assetSubject.onNext([])
             }
             else if let assetResponse = try? response.result.get(),
                     let assets = assetResponse.assets
@@ -59,7 +60,31 @@ class AssetListViewModel: PorttoBaseClass
                 self.currentPage += 1
                 self.shouldNextPage = assets.count < self.pageLimit ? false : true
                 self.assets.append(contentsOf: assets)
-                self.publishSubject.onNext(self.assets)
+                self.assetSubject.onNext(self.assets)
+            }
+        }
+    }
+    
+    func fetchBalance()
+    {
+        let etherscanAPIKey = "VHXV5AHAWQTQ1MU5BBUGKUPE34JIZTVHXB"
+        let params: Dictionary<String,Any> = ["address":ethereumAddress,
+                                              "module":"account",
+                                              "action":"balance",
+                                              "tag":"latest",
+                                              "apikey":etherscanAPIKey,]
+        
+        AF.request("https://api.etherscan.io/api", parameters: params).responseDecodable(of: EtherscanResponse.self)
+        { response in
+            
+            if let error = response.error
+            {
+                print(error.localizedDescription)
+            }
+            else if let etherscanResponse = try? response.result.get(),
+                    let balance = etherscanResponse.result
+            {
+                self.balanceSubject.onNext(balance)
             }
         }
     }

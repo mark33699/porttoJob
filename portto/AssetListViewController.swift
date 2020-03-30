@@ -12,7 +12,7 @@ import RxSwift
 import RxCocoa
 import ZVRefreshing
 
-let margin: CGFloat = 10
+let margin: CGFloat = 10 //for layout
 fileprivate let cellReuseIdentifier = "cell"
 
 class AssetListViewController: PorttoBaseViewController
@@ -38,6 +38,7 @@ class AssetListViewController: PorttoBaseViewController
         return cv
     }()
     
+    //MARK: Life cycle
     required init?(coder: NSCoder)
     {
         fatalError("init(coder:) has not been implemented")
@@ -50,30 +51,36 @@ class AssetListViewController: PorttoBaseViewController
         viewModelBinding()
     }
     
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        layoutUI()
+        viewModel.fetchAssets()
+        viewModel.fetchBalance()
+    }
+    
     private func viewModelBinding()
     {
-        viewModel.publishSubject
+        //update title
+        viewModel.balanceSubject
+            .bind
+            {[weak self] balance in
+                self?.title = "ETH: \(balance)"
+            }.disposed(by: bag)
+        
+        //update cell
+        viewModel.assetSubject
             .asDriver(onErrorJustReturn: [])
             .drive(collectionView.rx.items(cellIdentifier: cellReuseIdentifier,
                                            cellType: AssetListColell.self))
             { (_, asset, cell) in
-                
                 cell.updateUI(asset)
-                
             }.disposed(by: bag)
         
-        
+        //didselect
         collectionView.rx.modelSelected(Asset.self)
             .bind(to: viewModel.selectedAsset)
             .disposed(by: bag)
-    }
-    
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-//        title = "ETH餘額："
-        layoutUI()
-        viewModel.fetchAssets()
     }
     
     private func layoutUI()
@@ -93,13 +100,6 @@ class AssetListViewController: PorttoBaseViewController
 extension AssetListViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 {
     //Mark: Delegate
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
-//    {
-//        let vm = AssetDetailViewModel.init(currentAsset: viewModel.assets[indexPath.row])
-//        let vc = AssetDetailViewController.init(viewModel: vm)
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath)
     {
         if indexPath.row == viewModel.assets.count - 1
