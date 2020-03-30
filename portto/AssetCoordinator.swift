@@ -7,12 +7,13 @@
 //
 
 import XCoordinator
+import SafariServices
 
 enum AssetRoute: Route
 {
     case assetList
     case assetDetail(Asset)
-    case permalink
+    case permalink(URL)
 }
 
 class AssetCoordinator: NavigationCoordinator<AssetRoute>
@@ -31,11 +32,12 @@ class AssetCoordinator: NavigationCoordinator<AssetRoute>
             let vc = AssetListViewController.init(viewModel: vm)
             return .push(vc)
         case .assetDetail(let asset):
-            let vm = AssetDetailViewModel.init(currentAsset: asset)
+            let vm = AssetDetailViewModel.init(currentAsset: asset, router: unownedRouter)
             let vc = AssetDetailViewController.init(viewModel: vm)
             return .push(vc, animation: .default)
-        case .permalink:
-            return .dismissToRoot()
+        case .permalink(let url):
+            let sf = SFSafariViewController.init(url: url)
+            return .present(sf)
         }
     }
 }

@@ -7,13 +7,30 @@
 //
 
 import UIKit
+import RxSwift
+import XCoordinator
+import XCoordinatorRx
+import Action
 
 class AssetDetailViewModel: PorttoBaseClass
 {
-    let currentAsset: Asset
+    //MARK:- Input
+    private let router: UnownedRouter<AssetRoute>
+    private(set) lazy var tapPermalink = permalinkTappedAction.inputs
     
-    init(currentAsset: Asset)
+    private lazy var permalinkTappedAction = CocoaAction
+    { [unowned self] in
+        
+        let url = URL.init(string: self.currentAsset.permalink!)!
+        return self.router.rx.trigger(.permalink(url))
+    }
+    
+    init(currentAsset: Asset, router: UnownedRouter<AssetRoute>)
     {
         self.currentAsset = currentAsset
+        self.router = router
     }
+    
+    //MARK:- Output
+    let currentAsset: Asset
 }

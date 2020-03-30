@@ -17,12 +17,13 @@ class AssetListViewModel: PorttoBaseClass
 {
     //MARK:- Input
     private let router: UnownedRouter<AssetRoute>
+    private(set) lazy var selectedAsset = assetSelectedAction.inputs
+    
     lazy var assetSelectedAction = Action<Asset, Void>
     { [unowned self] asset in
         
         self.router.rx.trigger(.assetDetail(asset))
     }
-    private(set) lazy var selectedAsset = assetSelectedAction.inputs
 
     init(router: UnownedRouter<AssetRoute>)
     {

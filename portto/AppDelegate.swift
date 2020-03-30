@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate
 {
 //    var window: UIWindow?
     private lazy var mainWindow = UIWindow()
-    private let router = AppCoordinator().strongRouter
+    private let router = AssetCoordinator().strongRouter
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool
     {

@@ -10,7 +10,6 @@
 		0D019B872431147900376318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D019B862431147900376318 /* Kingfisher */; };
 		0D7CE4BC24313D3600DF7F96 /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */; };
 		0D7CE4BE24313D3600DF7F96 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BD24313D3600DF7F96 /* XCoordinator */; };
-		0D7CE4C124313E3200DF7F96 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CE4C024313E3200DF7F96 /* AppCoordinator.swift */; };
 		0D7CE4C32431422B00DF7F96 /* AssetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */; };
 		0D7CE4C62431475300DF7F96 /* Action in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4C52431475300DF7F96 /* Action */; };
 		0D82AC3F242E5D500031B32A /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0D82AC3E242E5D500031B32A /* Alamofire */; };
@@ -35,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D7CE4C024313E3200DF7F96 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCoordinator.swift; sourceTree = "<group>"; };
 		0D82AC43242E62B90031B32A /* AssetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewController.swift; sourceTree = "<group>"; };
 		0D82AC4D242E645B0031B32A /* PorttoBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoBaseClass.swift; sourceTree = "<group>"; };
@@ -89,7 +87,6 @@
 		0D7CE4BF24313E1A00DF7F96 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				0D7CE4C024313E3200DF7F96 /* AppCoordinator.swift */,
 				0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */,
 			);
 			name = Coordinators;
@@ -239,7 +236,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D7CE4C124313E3200DF7F96 /* AppCoordinator.swift in Sources */,
 				0D7CE4C32431422B00DF7F96 /* AssetCoordinator.swift in Sources */,
 				0DB42D8D2430B64700CD23E2 /* AssetDetailViewModel.swift in Sources */,
 				0DB42D8924307DBA00CD23E2 /* AssetListColell.swift in Sources */,
