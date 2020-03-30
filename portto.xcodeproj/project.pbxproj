@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0D019B872431147900376318 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0D019B862431147900376318 /* Kingfisher */; };
+		0D2CA3C22432486D005BE158 /* ZVActivityIndicatorView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */; };
+		0D2CA3C32432486D005BE158 /* ZVActivityIndicatorView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0D2CA3C624324876005BE158 /* ZVRefreshing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C524324876005BE158 /* ZVRefreshing.framework */; };
+		0D2CA3C724324876005BE158 /* ZVRefreshing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C524324876005BE158 /* ZVRefreshing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D7CE4BC24313D3600DF7F96 /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */; };
 		0D7CE4BE24313D3600DF7F96 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BD24313D3600DF7F96 /* XCoordinator */; };
 		0D7CE4C32431422B00DF7F96 /* AssetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */; };
@@ -33,7 +37,24 @@
 		0DB42D962430EF9800CD23E2 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = 0DB42D952430EF9800CD23E2 /* RxDataSources */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0D2CA3C42432486E005BE158 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0D2CA3C32432486D005BE158 /* ZVActivityIndicatorView.framework in Embed Frameworks */,
+				0D2CA3C724324876005BE158 /* ZVRefreshing.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZVActivityIndicatorView.framework; path = Carthage/Build/iOS/ZVActivityIndicatorView.framework; sourceTree = "<group>"; };
+		0D2CA3C524324876005BE158 /* ZVRefreshing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZVRefreshing.framework; path = Carthage/Build/iOS/ZVRefreshing.framework; sourceTree = "<group>"; };
 		0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCoordinator.swift; sourceTree = "<group>"; };
 		0D82AC43242E62B90031B32A /* AssetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewController.swift; sourceTree = "<group>"; };
 		0D82AC4D242E645B0031B32A /* PorttoBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoBaseClass.swift; sourceTree = "<group>"; };
@@ -64,8 +85,10 @@
 				0D019B872431147900376318 /* Kingfisher in Frameworks */,
 				0D82AC4A242E63E10031B32A /* RxSwift in Frameworks */,
 				0D82AC3F242E5D500031B32A /* Alamofire in Frameworks */,
+				0D2CA3C22432486D005BE158 /* ZVActivityIndicatorView.framework in Frameworks */,
 				0D82AC4C242E63E10031B32A /* RxCocoa in Frameworks */,
 				0DB42D962430EF9800CD23E2 /* RxDataSources in Frameworks */,
+				0D2CA3C624324876005BE158 /* ZVRefreshing.framework in Frameworks */,
 				0D82AC42242E5D760031B32A /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -82,6 +105,15 @@
 				0D82AC53242E73560031B32A /* Asset.swift */,
 			);
 			name = List;
+			sourceTree = "<group>";
+		};
+		0D2CA3C02432486D005BE158 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D2CA3C524324876005BE158 /* ZVRefreshing.framework */,
+				0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		0D7CE4BF24313E1A00DF7F96 /* Coordinators */ = {
@@ -120,6 +152,7 @@
 			children = (
 				0D9F42A1242E55AD00B474A7 /* portto */,
 				0D9F42A0242E55AD00B474A7 /* Products */,
+				0D2CA3C02432486D005BE158 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +187,8 @@
 				0D9F429B242E55AD00B474A7 /* Sources */,
 				0D9F429C242E55AD00B474A7 /* Frameworks */,
 				0D9F429D242E55AD00B474A7 /* Resources */,
+				0D2CA3C42432486E005BE158 /* Embed Frameworks */,
+				0D2CA3C8243248C0005BE158 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -230,6 +265,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0D2CA3C8243248C0005BE158 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/ZVRefreshing.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ZVActivityIndicatorView.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0D9F429B242E55AD00B474A7 /* Sources */ = {
@@ -394,6 +451,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FYWS2XXTMP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = portto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -412,6 +473,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FYWS2XXTMP;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = portto/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

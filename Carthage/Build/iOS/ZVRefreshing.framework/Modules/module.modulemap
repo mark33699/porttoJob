@@ -1,0 +1,11 @@
+framework module ZVRefreshing {
+  umbrella header "ZVRefreshing.h"
+
+  export *
+  module * { export * }
+}
+
+module ZVRefreshing.Swift {
+    header "ZVRefreshing-Swift.h"
+    requires objc
+}
