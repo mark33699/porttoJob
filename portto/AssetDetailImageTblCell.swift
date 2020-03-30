@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import AVFoundation
+import SDWebImage
 
 class AssetDetailImageTblCell: PorttoBaseTableViewCell
 {
@@ -43,38 +44,63 @@ class AssetDetailImageTblCell: PorttoBaseTableViewCell
         assetImageView.snp.removeConstraints()
     }
     
-    func updateUI(url: String)
+    func updateUI(urlString: String)
     {
-        if let url = URL.init(string: url)
+        if let url = URL.init(string: urlString)
         {
-            //取得圖片 > 算出比例 > 以寬度為準去調整高度
-            KingfisherManager.shared.retrieveImage(with: url)
-            { result in
-                
-                switch result {
-                case .success(let value):
-                    
-                    let realImageSize = AVMakeRect(aspectRatio: value.image.size, insideRect: self.assetImageView.frame).size
-                    let ratio = realImageSize.height / realImageSize.width
-
-                    if ratio > 0
-                    {
-                        self.assetImageView.image = value.image
-                        self.assetImageView.snp.makeConstraints
-                        { (maker) in
-                            
-                            maker.top.equalToSuperview()
-                            maker.left.equalToSuperview()
-                            maker.right.equalToSuperview()
-                            maker.bottom.equalToSuperview().offset(-margin)
-                            maker.height.equalTo(self.assetImageView.snp.width).multipliedBy(ratio)
-                        }
-                    }
-                    
-                case .failure(let error):
-                    print(error)
-                }
+            let count = urlString.count - 4
+            let ext = urlString[count...]
+            if ext == ".svg"
+            {
+                setSVGImage(url)
             }
+            else
+            {
+                setNormalImage(url)
+            }
+        }
+    }
+    
+    private func setSVGImage(_ url: URL)
+    {
+        self.assetImageView.sd_setImage(with: url)
+        self.imageViewMakeConstraints(ratio: 1)
+    }
+    
+    private func setNormalImage(_ url: URL)
+    {
+        //取得圖片 > 算出比例 > 以寬度為準去調整高度
+        KingfisherManager.shared.retrieveImage(with: url)
+        { result in
+            
+            switch result {
+            case .success(let value):
+                
+                let realImageSize = AVMakeRect(aspectRatio: value.image.size, insideRect: self.assetImageView.frame).size
+                let ratio = realImageSize.height / realImageSize.width
+
+                if ratio > 0
+                {
+                    self.assetImageView.image = value.image
+                    self.imageViewMakeConstraints(ratio: ratio)
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func imageViewMakeConstraints(ratio: CGFloat)
+    {
+        self.assetImageView.snp.makeConstraints
+        { (maker) in
+            
+            maker.top.equalToSuperview()
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.bottom.equalToSuperview().offset(-margin)
+            maker.height.equalTo(self.assetImageView.snp.width).multipliedBy(ratio)
         }
     }
 }

@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import SDWebImage
 
 class AssetListColell: UICollectionViewCell
 {
@@ -74,7 +75,7 @@ class AssetListColell: UICollectionViewCell
         if let imgUrl = asset.imageURL
         {
             let url = URL.init(string: imgUrl)
-            imageView.kf.setImage(with: url)
+            imageView.sd_setImage(with: url)
         }
     }
 }

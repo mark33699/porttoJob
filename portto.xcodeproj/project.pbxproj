@@ -13,6 +13,9 @@
 		0D2CA3C624324876005BE158 /* ZVRefreshing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C524324876005BE158 /* ZVRefreshing.framework */; };
 		0D2CA3C724324876005BE158 /* ZVRefreshing.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0D2CA3C524324876005BE158 /* ZVRefreshing.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0D2CA3CA24326F12005BE158 /* Balance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2CA3C924326F12005BE158 /* Balance.swift */; };
+		0D2CA3CD2432801D005BE158 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 0D2CA3CC2432801D005BE158 /* SDWebImage */; };
+		0D2CA3D024328173005BE158 /* SDWebImageSVGCoder in Frameworks */ = {isa = PBXBuildFile; productRef = 0D2CA3CF24328173005BE158 /* SDWebImageSVGCoder */; };
+		0D2CA3D324328D96005BE158 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2CA3D224328D95005BE158 /* String+Ext.swift */; };
 		0D7CE4BC24313D3600DF7F96 /* XCoordinatorRx in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */; };
 		0D7CE4BE24313D3600DF7F96 /* XCoordinator in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7CE4BD24313D3600DF7F96 /* XCoordinator */; };
 		0D7CE4C32431422B00DF7F96 /* AssetCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */; };
@@ -57,6 +60,7 @@
 		0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZVActivityIndicatorView.framework; path = Carthage/Build/iOS/ZVActivityIndicatorView.framework; sourceTree = "<group>"; };
 		0D2CA3C524324876005BE158 /* ZVRefreshing.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZVRefreshing.framework; path = Carthage/Build/iOS/ZVRefreshing.framework; sourceTree = "<group>"; };
 		0D2CA3C924326F12005BE158 /* Balance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Balance.swift; sourceTree = "<group>"; };
+		0D2CA3D224328D95005BE158 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		0D7CE4C22431422B00DF7F96 /* AssetCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetCoordinator.swift; sourceTree = "<group>"; };
 		0D82AC43242E62B90031B32A /* AssetListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetListViewController.swift; sourceTree = "<group>"; };
 		0D82AC4D242E645B0031B32A /* PorttoBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PorttoBaseClass.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 				0D019B872431147900376318 /* Kingfisher in Frameworks */,
 				0D82AC4A242E63E10031B32A /* RxSwift in Frameworks */,
 				0D82AC3F242E5D500031B32A /* Alamofire in Frameworks */,
+				0D2CA3CD2432801D005BE158 /* SDWebImage in Frameworks */,
+				0D2CA3D024328173005BE158 /* SDWebImageSVGCoder in Frameworks */,
 				0D2CA3C22432486D005BE158 /* ZVActivityIndicatorView.framework in Frameworks */,
 				0D82AC4C242E63E10031B32A /* RxCocoa in Frameworks */,
 				0DB42D962430EF9800CD23E2 /* RxDataSources in Frameworks */,
@@ -117,6 +123,14 @@
 				0D2CA3C12432486D005BE158 /* ZVActivityIndicatorView.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0D2CA3D124328D74005BE158 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0D2CA3D224328D95005BE158 /* String+Ext.swift */,
+			);
+			name = Extension;
 			sourceTree = "<group>";
 		};
 		0D7CE4BF24313E1A00DF7F96 /* Coordinators */ = {
@@ -175,6 +189,7 @@
 				0D7CE4BF24313E1A00DF7F96 /* Coordinators */,
 				0D019B8824312DA600376318 /* List */,
 				0D82AC47242E63150031B32A /* Detail */,
+				0D2CA3D124328D74005BE158 /* Extension */,
 				0D82AC45242E62D60031B32A /* supportFiles */,
 			);
 			path = portto;
@@ -208,6 +223,8 @@
 				0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */,
 				0D7CE4BD24313D3600DF7F96 /* XCoordinator */,
 				0D7CE4C52431475300DF7F96 /* Action */,
+				0D2CA3CC2432801D005BE158 /* SDWebImage */,
+				0D2CA3CF24328173005BE158 /* SDWebImageSVGCoder */,
 			);
 			productName = portto;
 			productReference = 0D9F429F242E55AD00B474A7 /* portto.app */;
@@ -245,6 +262,8 @@
 				0D019B852431147900376318 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0D7CE4BA24313D3600DF7F96 /* XCRemoteSwiftPackageReference "XCoordinator" */,
 				0D7CE4C42431475300DF7F96 /* XCRemoteSwiftPackageReference "Action" */,
+				0D2CA3CB2432801C005BE158 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				0D2CA3CE24328173005BE158 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */,
 			);
 			productRefGroup = 0D9F42A0242E55AD00B474A7 /* Products */;
 			projectDirPath = "";
@@ -299,6 +318,7 @@
 				0D7CE4C32431422B00DF7F96 /* AssetCoordinator.swift in Sources */,
 				0DB42D8D2430B64700CD23E2 /* AssetDetailViewModel.swift in Sources */,
 				0DB42D8924307DBA00CD23E2 /* AssetListColell.swift in Sources */,
+				0D2CA3D324328D96005BE158 /* String+Ext.swift in Sources */,
 				0D82AC54242E73560031B32A /* Asset.swift in Sources */,
 				0DB42D8F2430BB1E00CD23E2 /* AssetDetailImageTblCell.swift in Sources */,
 				0D82AC50242E65C80031B32A /* AssetListViewModel.swift in Sources */,
@@ -460,6 +480,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = portto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -482,6 +503,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = portto/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -523,6 +545,22 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.13.2;
+			};
+		};
+		0D2CA3CB2432801C005BE158 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.1;
+			};
+		};
+		0D2CA3CE24328173005BE158 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSVGCoder";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
 			};
 		};
 		0D7CE4BA24313D3600DF7F96 /* XCRemoteSwiftPackageReference "XCoordinator" */ = {
@@ -580,6 +618,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0D019B852431147900376318 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		0D2CA3CC2432801D005BE158 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D2CA3CB2432801C005BE158 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		0D2CA3CF24328173005BE158 /* SDWebImageSVGCoder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D2CA3CE24328173005BE158 /* XCRemoteSwiftPackageReference "SDWebImageSVGCoder" */;
+			productName = SDWebImageSVGCoder;
 		};
 		0D7CE4BB24313D3600DF7F96 /* XCoordinatorRx */ = {
 			isa = XCSwiftPackageProductDependency;

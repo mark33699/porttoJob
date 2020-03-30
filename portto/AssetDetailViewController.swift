@@ -118,7 +118,7 @@ extension AssetDetailViewController: UITableViewDataSource
         case .image:
             if let cell = tableView.dequeueReusableCell(withIdentifier: cellType.reuseIdentifier, for: indexPath) as? AssetDetailImageTblCell
             {
-                cell.updateUI(url: viewModel.currentAsset.imageURL ?? "")
+                cell.updateUI(urlString: viewModel.currentAsset.imageURL ?? "")
                 return cell
             }
         case .name, .desc:
