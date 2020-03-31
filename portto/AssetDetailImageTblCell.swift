@@ -69,24 +69,28 @@ class AssetDetailImageTblCell: PorttoBaseTableViewCell
     
     private func setNormalImage(_ url: URL)
     {
+        imageViewMakeConstraints(ratio: 1)
+        
         //取得圖片 > 算出比例 > 以寬度為準去調整高度
-        KingfisherManager.shared.retrieveImage(with: url)
-        { result in
+        SDWebImageManager.shared.loadImage(with: url, options: .highPriority, progress: nil)
+        { (image, data, error, cache, finished, url) in
+
+            if let error = error
+            {
+                print(error)
+            }
             
-            switch result {
-            case .success(let value):
-                
-                let realImageSize = AVMakeRect(aspectRatio: value.image.size, insideRect: self.assetImageView.frame).size
+            if let image = image, finished
+            {
+                let realImageSize = AVMakeRect(aspectRatio: image.size, insideRect: self.assetImageView.frame).size
                 let ratio = realImageSize.height / realImageSize.width
 
                 if ratio > 0
                 {
-                    self.assetImageView.image = value.image
+                    self.assetImageView.image = image
+                    self.assetImageView.snp.removeConstraints()
                     self.imageViewMakeConstraints(ratio: ratio)
                 }
-                
-            case .failure(let error):
-                print(error)
             }
         }
     }
